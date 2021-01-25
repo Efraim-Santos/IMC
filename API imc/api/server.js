@@ -4,9 +4,7 @@ const paciente = require('./data/pacientes.js');
 
 app.use(express.json());
 
-app.use(express.static('public'));
-
-app.get('/', (req, res)=>{
+app.get('/pacientes', (req, res)=>{
     res.json( paciente() );
 });
 // app.listen(3000);
