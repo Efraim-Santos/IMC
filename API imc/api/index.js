@@ -9,5 +9,4 @@ app.use(express.static('public'));
 app.get('/', (req, res)=>{
     res.json( paciente() );
 });
-
 // app.listen(3000);
