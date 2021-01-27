@@ -1,16 +1,18 @@
 const paciente = require('../data/paciente.json');
 const fs = require('fs');
-const cors = require('cors');
+
 
 module.exports = app => {
 
-    app.use(cors());
-    // const opcoesCors = {
+   // const opcoesCors = {
     //     origin: "*",
     //     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     //     preflightContinue: false,
     //     optionsSuccessStatus: 204
     // };
+    // app.get('/pacientes', cors(opcoesCors), (req, res)=>{
+    //     res.json( paciente );
+    // });
 
     app.get('/pacientes', /*cors(opcoesCors),*/ (req, res)=>{
         res.json( paciente );
