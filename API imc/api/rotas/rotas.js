@@ -14,7 +14,7 @@ module.exports = app => {
     //     res.json( paciente );
     // });
 
-    app.get('/pacientes', /*cors(opcoesCors),*/ (req, res)=>{
+    app.get('/pacientes', (req, res)=>{
         res.json( paciente );
     });
 
