@@ -4,14 +4,15 @@ const cors = require('cors');
 
 module.exports = app => {
 
-    const opcoesCors = {
-        origin: "*",
-        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-        preflightContinue: false,
-        optionsSuccessStatus: 204
-    };
+    app.use(cors());
+    // const opcoesCors = {
+    //     origin: "*",
+    //     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    //     preflightContinue: false,
+    //     optionsSuccessStatus: 204
+    // };
 
-    app.get('/pacientes', cors(opcoesCors), (req, res)=>{
+    app.get('/pacientes', /*cors(opcoesCors),*/ (req, res)=>{
         res.json( paciente );
     });
 
