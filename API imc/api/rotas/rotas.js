@@ -20,7 +20,6 @@ module.exports = app => {
 
     app.post('/adicionarPaciente', (req, res) => {
         const { nome, peso, altura, imc } = req.body;
-        
         let dados = {
             nome,
             peso,
