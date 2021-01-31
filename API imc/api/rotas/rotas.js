@@ -14,25 +14,45 @@ module.exports = app => {
     //     res.json( paciente );
     // });
 
+    //Buscar Paciente
     app.get('/pacientes', (req, res)=>{
-        res.json( paciente );
+        res.json(paciente);
     });
 
+    //Adicionar Paciente
     app.post('/adicionarPaciente', (req, res) => {
-        const { nome, peso, altura, imc } = req.body;
+        const { nome, peso, altura, deletar } = req.body;
         let dados = {
             nome,
             peso,
             altura,
-            imc
+            deletar
         };
 
         paciente.push(dados);
         
         fs.writeFile('./api/data/paciente.json', JSON.stringify(paciente), (err) => {
             if(err) throw err;
-            console.log("Salvo");
         });
-        res.json("ok");
+
+        res.status(200).json(`Paciente Adicionado`);
+    });
+
+    //Deletar Paciente
+    app.delete('/deletar', (req, res) =>{
+        const { nome, peso, altura} = req.body;
+        const novoArrayPaciente = paciente.filter(valor => {
+            if(!(valor.nome == nome && valor.peso == peso && valor.altura == altura)){
+                return valor;
+            }
+        });
+        if(novoArrayPaciente.length < paciente.length){
+            fs.writeFile('./api/data/paciente.json', JSON.stringify(novoArrayPaciente), (err) => {
+                if(err) throw err;
+            });
+        }else{
+            res.status(200).send(`Nenhum paciente foi encontrado, com esses dados!`);
+        }
+        res.status(200).send(`Paciente Removido!`);
     });
 }
