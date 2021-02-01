@@ -39,7 +39,7 @@ module.exports = app => {
     });
 
     //Deletar Paciente
-    app.delete('/deletar', (req, res) =>{
+    app.del('/deletar', (req, res) =>{
         const { nome, peso, altura} = req.body;
         const novoArrayPaciente = paciente.filter(valor => {
             if(!(valor.nome == nome && valor.peso == peso && valor.altura == altura)){
