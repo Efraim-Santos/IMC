@@ -8,7 +8,8 @@ module.exports = () => {
 
     app.use(express.json());
     app.use(cors());
-
+    app.options('*', cors())
+    
     consign()
         .include('api/rotas')
         .into(app)
