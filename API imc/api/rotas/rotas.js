@@ -2,6 +2,11 @@ const paciente = require('../data/paciente.json');
 const fs = require('fs');
 const { Console } = require('console');
 
+function salvarDados(dados){
+    fs.writeFile('./api/data/paciente.json', dados, (err) => {
+        if(err) throw err;
+    });
+}
 
 module.exports = app => {
 
@@ -32,9 +37,7 @@ module.exports = app => {
 
         paciente.push(dados);
         
-        fs.writeFile('./api/data/paciente.json', JSON.stringify(paciente), (err) => {
-            if(err) throw err;
-        });
+        salvarDados(JSON.stringify(paciente))
 
         res.status(200).json(`Paciente Adicionado`);
     });
@@ -48,16 +51,10 @@ module.exports = app => {
             }
         });
         if(novoArrayPaciente.length < paciente.length){
-            console.log(typeof(paciente))
-            console.log(typeof(novoArrayPaciente))
-            console.log(JSON.stringify(novoArrayPaciente))
-            console.log("cheguei aqui");
-            fs.writeFile('./api/data/paciente.json', JSON.stringify(novoArrayPaciente), (err) => {
-                if(err) throw err;
-            });
+            salvarDados(JSON.stringify(novoArrayPaciente)); 
+            res.status(200).json(`Paciente Removido!`);
         }else{
             res.status(200).json(`Nenhum paciente foi encontrado, com esses dados!`);
         }
-        res.status(200).json(`Paciente Removido!`);
     });
 }
