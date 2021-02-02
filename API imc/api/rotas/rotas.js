@@ -50,6 +50,7 @@ module.exports = app => {
         if(novoArrayPaciente.length < paciente.length){
             console.log(typeof(paciente))
             console.log(typeof(novoArrayPaciente))
+            JSON.stringify(novoArrayPaciente)
             console.log("cheguei aqui");
             fs.writeFile('./api/data/paciente.json', JSON.stringify(novoArrayPaciente), (err) => {
                 if(err) throw err;
