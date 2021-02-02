@@ -56,8 +56,8 @@ module.exports = app => {
                 if(err) throw err;
             });
         }else{
-            res.status(200).send(`Nenhum paciente foi encontrado, com esses dados!`);
+            res.status(200).json(`Nenhum paciente foi encontrado, com esses dados!`);
         }
-        res.status(200).send(`Paciente Removido!`);
+        res.status(200).json(`Paciente Removido!`);
     });
 }
