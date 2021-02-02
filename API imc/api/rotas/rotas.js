@@ -1,5 +1,6 @@
 const paciente = require('../data/paciente.json');
 const fs = require('fs');
+const { Console } = require('console');
 
 
 module.exports = app => {
@@ -47,6 +48,7 @@ module.exports = app => {
             }
         });
         if(novoArrayPaciente.length < paciente.length){
+            console.log("cheguei aqui");
             fs.writeFile('./api/data/paciente.json', JSON.stringify(novoArrayPaciente), (err) => {
                 if(err) throw err;
             });
