@@ -48,8 +48,8 @@ module.exports = app => {
             }
         });
         if(novoArrayPaciente.length < paciente.length){
-            console.log(paciente)
-            console.log(novoArrayPaciente)
+            console.log(typeof(paciente))
+            console.log(typeof(novoArrayPaciente))
             console.log("cheguei aqui");
             fs.writeFile('./api/data/paciente.json', JSON.stringify(novoArrayPaciente), (err) => {
                 if(err) throw err;
