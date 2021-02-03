@@ -1,4 +1,4 @@
-const paciente = require('../data/paciente.json');
+let paciente = require('../data/paciente.json');
 const fs = require('fs');
 const { Console } = require('console');
 
