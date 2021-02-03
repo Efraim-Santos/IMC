@@ -1,4 +1,4 @@
-let paciente = require('../data/paciente.json');
+const paciente = require('../data/paciente.json');
 const fs = require('fs');
 const { Console } = require('console');
 
@@ -43,17 +43,17 @@ module.exports = app => {
     });
 
     //Deletar Paciente
-    app.delete('/deletar', (req, res) =>{
+    app.del('/deletar', (req, res) =>{
         const { nome, peso, altura} = req.body;
-        paciente = paciente.filter(valor => {
+        let novoArrayPaciente = [];
+        novoArrayPaciente = paciente.filter(valor => {
             if(!(valor.nome == nome && valor.peso == peso && valor.altura == altura)){
                 return valor;
             }
         });
-        if(paciente.length){
-            console.log(paciente)
-            salvarDados(JSON.stringify(paciente)); 
-            res.status(200).json(`Paciente Removido!`);
+        if(novoArrayPaciente.length < paciente.length){
+            salvarDados(JSON.stringify(novoArrayPaciente)); 
+             res.status(200).json(`Paciente Removido!`);
         }else{
             res.status(200).json(`Nenhum paciente foi encontrado, com esses dados!`);
         }
