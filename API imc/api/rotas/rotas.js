@@ -45,8 +45,8 @@ module.exports = app => {
     //Deletar Paciente
     app.del('/deletar', (req, res) =>{
         const { nome, peso, altura} = req.body;
-        let novoArrayPaciente = [];
-        novoArrayPaciente = paciente.filter(valor => {
+        let novoArrayPaciente = [...paciente];
+        novoArrayPaciente = novoArrayPaciente.filter(valor => {
             if(!(valor.nome == nome && valor.peso == peso && valor.altura == altura)){
                 return valor;
             }
